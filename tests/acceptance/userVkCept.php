@@ -41,6 +41,9 @@ while (true) {
     // Добавляемся в группу с http://promovk.ru/
     $I->addGroupPromovk();
 
+    // Добавляемся в друзья с http://promovk.ru/
+    $I->addFriendPromovk();
+
     $randChance = rand(1, 100);
 
     if($randChance <= 15) {

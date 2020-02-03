@@ -861,11 +861,62 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click("//div[@class='popup']//a[@class='button jobs-run']");
         $this->waitForElementNotVisible("//div[@class='popup']", 60);
         $this->wait(3);
-        echo "\nДобавились в группу";
+        echo "\nДобавились в группу из promovk.ru";
         } catch (Exception $e) {
+            echo "\nНе получилось добавится в группу из promovk.ru";
             $day = date("d.m.y");
             $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Group NOT click button addGroup";
+            $errorPlay = $time . ' ' . $day . ' ' . "Error: NOT add Group promovk.ru";
+            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
+        }
+    }
+
+    /**
+     * Добавляемся в друзья с http://promovk.ru/
+     */
+
+    function addFriendPromovk() {
+        try {
+            $this->amOnUrl("http://promovk.ru/performer/");
+            $this->waitForElementVisible("//div[@class='selectjobs']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='selectjobs']/ul/li[2]");
+            $this->waitForElementVisible("//div[@class='jobslist']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='add_friend hide check']//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
+            $this->waitForElementVisible("//div[@class='popup']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='popup']//a[@class='button jobs-go']");
+            $this->wait(3);
+
+            $this->switchToNextTab();
+            $this->wait(rand(3, 5));
+
+            try {
+                $this->click("Добавить в друзья");
+            } catch (Exception $e) {
+                try {
+                    $this->click("Подписаться");
+                } catch (Exception $e) {}
+            }
+
+            $this->wait(rand(3, 5));
+
+            $this->closeTab();
+            $this->wait(3);
+
+            $this->click("//div[@class='popup']//a[@class='button jobs-run']");
+            $this->waitForElementNotVisible("//div[@class='popup']", 60);
+            $this->wait(3);
+            echo "\nДобавились в друзья из promovk.ru";
+        } catch (Exception $e) {
+            echo "\nНе получилось добавится в друзья из promovk.ru";
+            $day = date("d.m.y");
+            $time = date("H:i:s");
+            $errorPlay = $time . ' ' . $day . ' ' . "Error: NOT add Friend promovk.ru";
             file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
     }
