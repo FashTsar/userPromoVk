@@ -94,7 +94,7 @@ while (true) {
             $I->addVideo();
         }
     }
-    $randWait = rand(149, 211);
+    $randWait = rand(176, 364);
     echo "\nЖдём $randWait секунд";
     $I->wait($randWait);
 }

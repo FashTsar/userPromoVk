@@ -3,8 +3,8 @@
 $I = new AcceptanceTester($scenario);
 
 // принимаемые параметры
-$loginVK = "79035327901";
-$passwordVK = "oCQS3So";
+$loginVK = "";
+$passwordVK = "";
 
 // переходим на страницу ВК и авторизуемся
 $I->authorizationVK($loginVK, $passwordVK);
