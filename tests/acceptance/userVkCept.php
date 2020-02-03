@@ -74,39 +74,15 @@ while (true) {
         }
     }
     if ($randChance > 80 && $randChance <= 90) {
-        if ($runAddRepostNews === true) {
-            // делаем репост новости
-            $I->addRepostNews();
-        }
-    }
-    if ($randChance > 90 && $randChance <= 93) {
         if ($runAddMusic === true) {
             // добавляем песню
             $I->addMusic();
         }
     }
-    if ($randChance > 93 && $randChance <= 95) {
+    if ($randChance > 90 && $randChance <= 100) {
         if ($runAddVideo === true) {
             // добавляем видео
             $I->addVideo();
-        }
-    }
-    if ($randChance > 95 && $randChance <= 98) {
-        if ($runAddGroup === true) {
-            // добавляемся в группу
-            $I->addGroup();
-        }
-    }
-    if ($randChance === 99) {
-        if ($runAddFineFriend === true) {
-            // добавляем друга из поиска
-            $I->addFineFriend();
-        }
-    }
-    if ($randChance === 100) {
-        if ($runAddOfferFriend === true) {
-            // добавляем друга из предложенных
-            $I->addOfferFriend();
         }
     }
     $randWait = rand(149, 211);
