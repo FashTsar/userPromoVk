@@ -814,4 +814,59 @@ class AcceptanceTester extends \Codeception\Actor
         $this->waitForText("Выйти", 60);
         $this->wait(3);
     }
+
+    /**
+     * Добавляемся в группу с http://promovk.ru/
+     */
+
+    function addGroupPromovk() {
+        try {
+        $this->amOnUrl("http://promovk.ru/performer/");
+        $this->waitForElementVisible("//div[@class='selectjobs']", 60);
+        $this->wait(3);
+
+        $this->click("//div[@class='selectjobs']/ul/li[1]");
+        $this->waitForElementVisible("//div[@class='jobslist']", 60);
+        $this->wait(3);
+
+        $this->click("//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
+        $this->waitForElementVisible("//div[@class='popup']", 60);
+        $this->wait(3);
+
+        $this->click("//div[@class='popup']//a[@class='button jobs-go']");
+        $this->wait(3);
+
+        $this->switchToNextTab();
+        $this->wait(rand(3, 5));
+
+            try {
+                $this->click("Вступить в группу");
+            } catch (Exception $e) {
+                try {
+                    $this->click("Подписаться");
+                } catch (Exception $e) {
+                    try {
+                        $this->click("Подать заявку");
+                    } catch (Exception $e) {
+                        $this->click("Присоединиться");
+                    }
+                }
+            }
+
+        $this->wait(rand(3, 5));        
+
+        $this->closeTab();
+        $this->wait(3);
+
+        $this->click("//div[@class='popup']//a[@class='button jobs-run']");
+        $this->waitForElementNotVisible("//div[@class='popup']", 60);
+        $this->wait(3);
+        echo "\nДобавились в группу";
+        } catch (Exception $e) {
+            $day = date("d.m.y");
+            $time = date("H:i:s");
+            $errorPlay = $time . ' ' . $day . ' ' . "Error: Group NOT click button addGroup";
+            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
+        }
+    }
 }
