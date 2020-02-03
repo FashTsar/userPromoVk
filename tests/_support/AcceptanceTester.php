@@ -796,4 +796,22 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click("Прикрепить");
         $this->wait(rand(3,5));
     }
+
+    /**
+     * ---======= ДЕЙСТВИЯ http://promovk.ru/ =======---
+     */
+
+    /**
+     * авторизация http://promovk.ru/
+     */
+
+    function autorizationPromovk() {
+        $this->amOnUrl("http://promovk.ru/?a=245816");
+        $this->waitForElementVisible("//a[@class='vk-c button mean']", 60);
+        $this->wait(3);
+
+        $this->click("//a[@class='vk-c button mean']");
+        $this->waitForText("Выйти", 60);
+        $this->wait(3);
+    }
 }
