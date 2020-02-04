@@ -24,6 +24,7 @@ modules:
   config:
     WebDriver:
       browser: chrome
+      port: 9515 # ChromeDriver port
       window_size: false
       capabilities:
         chromeOptions:
