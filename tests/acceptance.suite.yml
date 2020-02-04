@@ -20,6 +20,7 @@ modules:
       window_size: false
       chromeOptions:
         args: ["--headless", "--no-sandbox"]
+        binary: "/usr/bin/google-chrome"
 
 ## Настройки для использования ChromeDriver (БЕЗ Selenium)
 #modules:
