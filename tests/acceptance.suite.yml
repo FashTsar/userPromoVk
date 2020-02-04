@@ -17,9 +17,7 @@ modules:
     WebDriver:
       url: 'http://acceptanceTest/'
       browser: 'chrome'
-      chromeOptions:
-        args: ["--headless", "--disable-gpu", "--window-size=1024,768"]
-        binary: "/usr/bin/google-chrome"
+      window_size: 1349x600
 
 ## Настройки для использования ChromeDriver (БЕЗ Selenium)
 #modules:
