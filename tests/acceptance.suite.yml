@@ -19,7 +19,7 @@ modules:
       browser: 'chrome'
       window_size: false
       chromeOptions:
-        args: ["--headless", "window-size=1024,768", "--no-sandbox"]
+        args: ["--headless", "--no-sandbox"]
 
 ## Настройки для использования ChromeDriver (БЕЗ Selenium)
 #modules:
