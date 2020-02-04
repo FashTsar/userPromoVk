@@ -3,8 +3,8 @@
 $I = new AcceptanceTester($scenario);
 
 // принимаемые параметры
-$loginVK = "";
-$passwordVK = "";
+$loginVK = "79035327901";
+$passwordVK = "oCQS3So";
 $runCheckFriendRequests = true;
 $runAddNewsMyPageVk = true;
 $runAddNewsPageNewsVk = true;
