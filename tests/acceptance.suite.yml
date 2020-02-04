@@ -6,27 +6,26 @@
 
 class_name: AcceptanceTester
 
-# Настройки для использования Selenium + ChromeDriver
-modules:
-  enabled:
-    #- PhpBrowser
-    - WebDriver
-  config:
-    #PhpBrowser:
-    #  url: 'http://acceptanceTest/'
-    WebDriver:
-      url: 'http://acceptanceTest/'
-      browser: 'chrome'
-      window_size: 1349x600
+### Настройки для использования Selenium + ChromeDriver
+##modules:
+##  enabled:
+##    #- PhpBrowser
+##    - WebDriver
+##  config:
+##    #PhpBrowser:
+##    #  url: 'http://acceptanceTest/'
+##    WebDriver:
+##      url: 'http://acceptanceTest/'
+##      browser: 'chrome'
+##      window_size: 1349x600
 
 # Настройки для использования ChromeDriver (БЕЗ Selenium)
-#modules:
-#       enabled:
-#          - WebDriver:
-#             url: 'http://localhost/'
-#             window_size: false # disabled in ChromeDriver
-#             port: 9515
-#             browser: chrome
-#             capabilities:
-#                 chromeOptions: # additional chrome options
-#                  args: ["--headless", "--disable-gpu"]
+modules:
+  config:
+    WebDriver:
+      browser: chrome
+      window_size: false
+      capabilities:
+        chromeOptions:
+          args: ["--headless", "--disable-gpu"]
+          binary: "/usr/bin/google-chrome"
