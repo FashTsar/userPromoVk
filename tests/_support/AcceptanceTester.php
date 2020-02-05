@@ -476,9 +476,7 @@ class AcceptanceTester extends \Codeception\Actor
                 try {
                     $this->click("Добавить в друзья");
                 } catch (Exception $e) {
-                    try {
                         $this->click("Подписаться");
-                    } catch (Exception $e) {}
                 }
             } catch (Exception $e) {
                 echo "\nОшибка: не полусилось добавить друга из поиска";
