@@ -809,6 +809,64 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
+     * Добавляемся в группу (гарантия) с http://promovk.ru/
+     */
+
+    function addGroupGarantPromovk() {
+        try {
+            $this->amOnUrl("http://promovk.ru/performer/");
+            $this->waitForElementVisible("//div[@class='selectjobs']", 60);
+            $this->wait(3);
+
+            $this->click("//a[@data-id='subscription_guarantee']");
+            $this->waitForElementVisible("//div[@class='jobslist']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='subscription_guarantee hide check']//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
+            $this->waitForElementVisible("//div[@class='popup']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='popup']//a[@class='button jobs-go']");
+            $this->wait(3);
+
+            $this->switchToNextTab();
+            $this->wait(rand(3, 5));
+
+            try {
+                try {
+                    $this->click("Вступить в группу");
+                } catch (Exception $e) {
+                    try {
+                        $this->click("Подписаться");
+                    } catch (Exception $e) {
+                        try {
+                            $this->click("Подать заявку");
+                        } catch (Exception $e) {
+                            $this->click("Присоединиться");
+                        }
+                    }
+                }
+
+                $this->wait(rand(3, 5));
+
+                $this->closeTab();
+                $this->wait(3);
+
+                $this->click("//div[@class='popup']//a[@class='button jobs-run']");
+                $this->waitForElementNotVisible("//div[@class='popup']", 60);
+                $this->wait(3);
+                echo "\nДобавились в группу (гарантия) из promovk.ru";
+            } catch (Exception $e) {
+                echo "\nНе получилось добавится в группу (гарантия) из promovk.ru";
+                $this->closeTab();
+                $this->wait(3);
+            }
+        } catch (Exception $e) {
+            echo "\nНе получилось добавится в группу (гарантия) из promovk.ru";
+        }
+    }
+
+    /**
      * Добавляемся в друзья с http://promovk.ru/
      */
 

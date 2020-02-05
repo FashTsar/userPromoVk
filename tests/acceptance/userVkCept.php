@@ -3,8 +3,8 @@
 $I = new AcceptanceTester($scenario);
 
 // принимаемые параметры
-$loginVK = "79035327901";
-$passwordVK = "oCQS3So";
+$loginVK = "";
+$passwordVK = "";
 $runCheckFriendRequests = true;
 $runAddNewsMyPageVk = true;
 $runAddNewsPageNewsVk = true;
@@ -94,6 +94,10 @@ while (true) {
             $I->addVideo();
         }
     }
+
+    // Добавляемся в группу (гарантия) с http://promovk.ru/
+    $I->addGroupGarantPromovk();
+
     $randWait = rand(176, 364);
     echo "\nЖдём $randWait секунд";
     $I->wait($randWait);
