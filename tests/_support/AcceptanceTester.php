@@ -43,11 +43,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nАвторизация прошла успешно";
         } catch (Exception $e) {
             echo "\nОшибка: Авторизация не прошла";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: not authorization VK";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
-            $this->closeTab();
         }
 
     }
@@ -72,10 +67,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nЗаявка в друзья подтверждена";
         } catch (Exception $e) {
             echo "\nНовых друзей не обнаружено";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: check Friend Requests NOT run";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
     }
 
@@ -108,10 +99,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nСтатус в ВК добавлен";
         }catch (Exception $e){
             echo "\nОшибка: Статус в ВК не добавлен";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: not add Status Vk";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         };
         $this->wait(rand(21, 59));
     }
@@ -186,10 +173,6 @@ class AcceptanceTester extends \Codeception\Actor
             }
         } catch (Exception $e){
             echo "\nОшибка: новость не добавилась со своей страницы";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: News My Page Vk NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         };
         $this->wait(rand(21, 59));
     }
@@ -265,10 +248,6 @@ class AcceptanceTester extends \Codeception\Actor
             }
         } catch (Exception $e){
             echo "\nОшибка: новость не добавилась";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: News Page News Vk NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         };
         $this->wait(rand(21, 59));
     }
@@ -333,10 +312,6 @@ class AcceptanceTester extends \Codeception\Actor
             }
         } catch (Exception $e){
             echo "\nОшибка: новость без слов не добавилась со своей страницы";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: News My Page Vk Not Words NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         };
         $this->wait(rand(21, 59));
     }
@@ -402,10 +377,6 @@ class AcceptanceTester extends \Codeception\Actor
             }
         } catch (Exception $e){
             echo "\nОшибка: новость без слов не добавилась";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: News Page News Vk Not Words NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         };
         $this->wait(rand(21, 59));
     }
@@ -454,19 +425,12 @@ class AcceptanceTester extends \Codeception\Actor
                     }
                 }
             } catch (Exception $e) {
-                $day = date("d.m.y");
-                $time = date("H:i:s");
-                $errorPlay = $time . ' ' . $day . ' ' . "Error: Group NOT click button addGroup";
-                file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
+                echo "\nОшибка: не получилось добавиться в группу";
             }
             $this->wait(rand(3, 5));
             echo "\nДобавились в группу";
         } catch (Exception $e){
             echo "\nОшибка: не получилось добавиться в группу";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Group NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -517,19 +481,12 @@ class AcceptanceTester extends \Codeception\Actor
                     } catch (Exception $e) {}
                 }
             } catch (Exception $e) {
-                $day = date("d.m.y");
-                $time = date("H:i:s");
-                $errorPlay = $time . ' ' . $day . ' ' . "Error: Friend NOT click button addFineFriend";
-                file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
+                echo "\nОшибка: не полусилось добавить друга из поиска";
             }
             $this->wait(rand(3, 5));
             echo "\nДобавили друга из поиска";
         } catch (Exception $e) {
             echo "\nОшибка: не полусилось добавить друга из поиска";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Friend NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -553,10 +510,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nДобавили друга из предложенных";
         } catch (Exception $e) {
             echo "\nОшибка: не получилось добавить друга из предложенных";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Offer Friend NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -577,10 +530,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nПоставили лайк на новость";
         } catch (Exception $e) {
             echo "\nОшибка: не получилось поставить лайк на новость";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Like News NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -605,10 +554,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nСделали репост из ленты новостей";
         } catch (Exception $e) {
             echo "\nОшибка: не получилось сделать репост из ленты новостей";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Repost News NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -638,10 +583,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nДобавили песню в свою музыку";
         } catch (Exception $e) {
             echo "\nОшибка: не получилось добавить к себе песню";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Music NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -671,10 +612,6 @@ class AcceptanceTester extends \Codeception\Actor
             echo "\nДобавили к себе видео";
         } catch (Exception $e) {
             echo "\nОшибка: не получилось добавить к себе видео";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: Video NOT add";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
         $this->wait(rand(21, 59));
     }
@@ -840,34 +777,36 @@ class AcceptanceTester extends \Codeception\Actor
         $this->wait(rand(3, 5));
 
             try {
-                $this->click("Вступить в группу");
-            } catch (Exception $e) {
                 try {
-                    $this->click("Подписаться");
+                    $this->click("Вступить в группу");
                 } catch (Exception $e) {
                     try {
-                        $this->click("Подать заявку");
+                        $this->click("Подписаться");
                     } catch (Exception $e) {
-                        $this->click("Присоединиться");
+                        try {
+                            $this->click("Подать заявку");
+                        } catch (Exception $e) {
+                            $this->click("Присоединиться");
+                        }
                     }
                 }
+
+                $this->wait(rand(3, 5));
+
+                $this->closeTab();
+                $this->wait(3);
+
+                $this->click("//div[@class='popup']//a[@class='button jobs-run']");
+                $this->waitForElementNotVisible("//div[@class='popup']", 60);
+                $this->wait(3);
+                echo "\nДобавились в группу из promovk.ru";
+            } catch (Exception $e) {
+                echo "\nНе получилось добавится в группу из promovk.ru";
+                $this->closeTab();
+                $this->wait(3);
             }
-
-        $this->wait(rand(3, 5));        
-
-        $this->closeTab();
-        $this->wait(3);
-
-        $this->click("//div[@class='popup']//a[@class='button jobs-run']");
-        $this->waitForElementNotVisible("//div[@class='popup']", 60);
-        $this->wait(3);
-        echo "\nДобавились в группу из promovk.ru";
         } catch (Exception $e) {
             echo "\nНе получилось добавится в группу из promovk.ru";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: NOT add Group promovk.ru";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
     }
 
@@ -896,28 +835,30 @@ class AcceptanceTester extends \Codeception\Actor
             $this->wait(rand(3, 5));
 
             try {
-                $this->click("Добавить в друзья");
-            } catch (Exception $e) {
                 try {
-                    $this->click("Подписаться");
-                } catch (Exception $e) {}
+                    $this->click("Добавить в друзья");
+                } catch (Exception $e) {
+                    try {
+                        $this->click("Подписаться");
+                    } catch (Exception $e) {}
+                }
+
+                $this->wait(rand(3, 5));
+
+                $this->closeTab();
+                $this->wait(3);
+
+                $this->click("//div[@class='popup']//a[@class='button jobs-run']");
+                $this->waitForElementNotVisible("//div[@class='popup']", 60);
+                $this->wait(3);
+                echo "\nДобавились в друзья из promovk.ru";
+            } catch (Exception $e) {
+                echo "\nНе получилось добавится в друзья из promovk.ru";
+                $this->closeTab();
+                $this->wait(3);
             }
-
-            $this->wait(rand(3, 5));
-
-            $this->closeTab();
-            $this->wait(3);
-
-            $this->click("//div[@class='popup']//a[@class='button jobs-run']");
-            $this->waitForElementNotVisible("//div[@class='popup']", 60);
-            $this->wait(3);
-            echo "\nДобавились в друзья из promovk.ru";
         } catch (Exception $e) {
             echo "\nНе получилось добавится в друзья из promovk.ru";
-            $day = date("d.m.y");
-            $time = date("H:i:s");
-            $errorPlay = $time . ' ' . $day . ' ' . "Error: NOT add Friend promovk.ru";
-            file_put_contents('tests/log/log', $errorPlay . ",\n", FILE_APPEND);
         }
     }
 }
