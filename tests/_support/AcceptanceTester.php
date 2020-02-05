@@ -762,11 +762,11 @@ class AcceptanceTester extends \Codeception\Actor
         $this->waitForElementVisible("//div[@class='selectjobs']", 60);
         $this->wait(3);
 
-        $this->click("//div[@class='selectjobs']/ul/li[1]");
+        $this->click("//a[@data-id='subscription']");
         $this->waitForElementVisible("//div[@class='jobslist']", 60);
         $this->wait(3);
 
-        $this->click("//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
+        $this->click("//div[@class='subscription hide check']//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
         $this->waitForElementVisible("//div[@class='popup']", 60);
         $this->wait(3);
 
@@ -820,7 +820,7 @@ class AcceptanceTester extends \Codeception\Actor
             $this->waitForElementVisible("//div[@class='selectjobs']", 60);
             $this->wait(3);
 
-            $this->click("//div[@class='selectjobs']/ul/li[2]");
+            $this->click("//a[@data-id='add_friend']");
             $this->waitForElementVisible("//div[@class='jobslist']", 60);
             $this->wait(3);
 
@@ -838,9 +838,7 @@ class AcceptanceTester extends \Codeception\Actor
                 try {
                     $this->click("Добавить в друзья");
                 } catch (Exception $e) {
-                    try {
                         $this->click("Подписаться");
-                    } catch (Exception $e) {}
                 }
 
                 $this->wait(rand(3, 5));
