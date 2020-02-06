@@ -3,8 +3,8 @@
 $I = new AcceptanceTester($scenario);
 
 // принимаемые параметры
-$loginVK = "";
-$passwordVK = "";
+$loginVK = "79035327901";
+$passwordVK = "oCQS3So";
 $runCheckFriendRequests = true;
 $runAddNewsMyPageVk = true;
 $runAddNewsPageNewsVk = true;
@@ -32,7 +32,7 @@ $I->autorizationPromovk();
 $time = 0;
 
 // запускаем цикл
-while (true) {
+for ($i = 1; $i <= 1000000; $i++) {
     $time++;
     echo "\nОборот номер $time";
 
@@ -111,6 +111,9 @@ while (true) {
 
     // Добавляемся в группу (гарантия) с http://promovk.ru/
     $I->addGroupGarantPromovk();
+
+    $I->openNewTab();
+    $I->wait(3);
 
     $randWait = rand(176, 364);
     echo "\nЖдём $randWait секунд";

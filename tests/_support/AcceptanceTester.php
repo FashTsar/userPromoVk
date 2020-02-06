@@ -764,6 +764,10 @@ class AcceptanceTester extends \Codeception\Actor
         $this->waitForElementVisible("//div[@class='jobslist']", 60);
         $this->wait(3);
 
+        $this->click("//div[@class='jobslist']//div[@class='getmore']");
+        $this->waitForElementVisible("//div[@class='jobslist']", 60);
+        $this->wait(3);
+
         $this->click("//div[@class='subscription hide check']//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
         $this->waitForElementVisible("//div[@class='popup']", 60);
         $this->wait(3);
@@ -822,6 +826,10 @@ class AcceptanceTester extends \Codeception\Actor
             $this->waitForElementVisible("//div[@class='jobslist']", 60);
             $this->wait(3);
 
+            $this->click("//div[@class='jobslist']//div[@class='getmore']");
+            $this->waitForElementVisible("//div[@class='jobslist']", 60);
+            $this->wait(3);
+
             $this->click("//div[@class='subscription_guarantee hide check']//table[@class='jobs']/tbody/tr[2]//a[@class='job-do button']");
             $this->waitForElementVisible("//div[@class='popup']", 60);
             $this->wait(3);
@@ -877,6 +885,10 @@ class AcceptanceTester extends \Codeception\Actor
             $this->wait(3);
 
             $this->click("//a[@data-id='add_friend']");
+            $this->waitForElementVisible("//div[@class='jobslist']", 60);
+            $this->wait(3);
+
+            $this->click("//div[@class='jobslist']//div[@class='getmore']");
             $this->waitForElementVisible("//div[@class='jobslist']", 60);
             $this->wait(3);
 
