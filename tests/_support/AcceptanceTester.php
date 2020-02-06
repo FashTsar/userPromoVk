@@ -40,11 +40,10 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click("//button[@id='login_button']");
         try {
             $this->waitForText("Моя страница", 60);
-            echo "\nАвторизация прошла успешно";
+            echo "\nАвторизация в ВК прошла успешно";
         } catch (Exception $e) {
-            echo "\nОшибка: Авторизация не прошла";
+            echo "\nОшибка: Авторизация в ВК не прошла";
         }
-
     }
 
     /**
@@ -57,14 +56,14 @@ class AcceptanceTester extends \Codeception\Actor
 
     function checkingNumberGroups() {
         $this->amOnUrl("https://vk.com/groups");
-        $this->waitForElementNotVisible("//li[@id='groups_groups_tab']/a[@class='ui_tab ui_tab_sel']/span", 60);
+        $this->waitForElementVisible("//li[@id='groups_groups_tab']/a[@class='ui_tab ui_tab_sel']/span", 60);
         $this->wait(3);
 
         $numberGroups = $this->grabTextFrom("//li[@id='groups_groups_tab']/a[@class='ui_tab ui_tab_sel']/span");
-        echo "Количество групп = ".$numberGroups;
+        echo "\nКоличество групп = ".$numberGroups;
 
         if ($numberGroups == 4999) {
-            $this->see("Достигнут предел лимита по группам!!! Заканчиваем работу!!!");
+            $this->see("\nДостигнут предел лимита по группам!!! Заканчиваем работу!!!");
         }
     }
 
@@ -763,8 +762,13 @@ class AcceptanceTester extends \Codeception\Actor
         $this->wait(3);
 
         $this->click("//a[@class='vk-c button mean']");
-        $this->waitForText("Выйти", 60);
-        $this->wait(3);
+        try {
+            $this->waitForText("Выйти", 60);
+            $this->wait(3);
+            echo "\nАвторизация в promovk.ru прошла успешно";
+        } catch (Exception $e) {
+            echo "\nОшибка: Авторизация в promovk.ru не прошла";
+        }
     }
 
     /**
