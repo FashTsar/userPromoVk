@@ -3,8 +3,8 @@
 $I = new AcceptanceTester($scenario);
 
 // принимаемые параметры
-$loginVK = "";
-$passwordVK = "";
+$loginVK = "79035327901";
+$passwordVK = "oCQS3So";
 $runCheckFriendRequests = true;
 $runAddNewsMyPageVk = true;
 $runAddNewsPageNewsVk = true;
@@ -19,6 +19,9 @@ $runAddGroup = true;
 $runAddFineFriend = true;
 $runAddOfferFriend = true;
 
+$I->openNewTab();
+$I->wait(3);
+
 // переходим на страницу ВК и авторизуемся
 $I->authorizationVK($loginVK, $passwordVK);
 
@@ -32,6 +35,17 @@ $time = 0;
 while (true) {
     $time++;
     echo "\nОборот номер $time";
+
+    $I->openNewTab();
+    $I->wait(3);
+    $I->amOnUrl("https://www.google.ru/");
+    $I->wait(3);
+    $I->switchToPreviousTab(1);
+    $I->wait(3);
+    $I->closeTab();
+    $I->wait(3);
+    $I->switchToNextTab();
+    $I->wait(3);
 
     if ($runCheckFriendRequests === true) {
         // проверяем заявки в друзья
