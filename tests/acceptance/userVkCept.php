@@ -47,6 +47,9 @@ for ($i = 1; $i <= 1000000; $i++) {
     $I->switchToNextTab();
     $I->wait(3);
 
+    // проверка количества групп в ВК
+    $I->checkingNumberGroups();
+
     if ($runCheckFriendRequests === true) {
         // проверяем заявки в друзья
         $I->checkFriendRequests();
@@ -112,6 +115,9 @@ for ($i = 1; $i <= 1000000; $i++) {
     // Добавляемся в группу (гарантия) с http://promovk.ru/
     $I->addGroupGarantPromovk();
 
+
+    $I->closeTab();
+    $I->wait(3);
     $I->openNewTab();
     $I->wait(3);
 

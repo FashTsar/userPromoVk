@@ -8,6 +8,3 @@ $passwordVK = "";
 
 // переходим на страницу ВК и авторизуемся
 $I->authorizationVK($loginVK, $passwordVK);
-
-// авторизуемся в http://promovk.ru/
-$I->autorizationPromovk();

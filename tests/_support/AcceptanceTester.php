@@ -52,6 +52,23 @@ class AcceptanceTester extends \Codeception\Actor
      */
 
     /**
+     * проверка количества групп в ВК
+     */
+
+    function checkingNumberGroups() {
+        $this->amOnUrl("https://vk.com/groups");
+        $this->waitForElementNotVisible("//li[@id='groups_groups_tab']/a[@class='ui_tab ui_tab_sel']/span", 60);
+        $this->wait(3);
+
+        $numberGroups = $this->grabTextFrom("//li[@id='groups_groups_tab']/a[@class='ui_tab ui_tab_sel']/span");
+        echo "Количество групп = ".$numberGroups;
+
+        if ($numberGroups == 4999) {
+            $this->see("Достигнут предел лимита по группам!!! Заканчиваем работу!!!");
+        }
+    }
+
+    /**
      * Проверяем заявки в друзья
      */
     function checkFriendRequests() {
