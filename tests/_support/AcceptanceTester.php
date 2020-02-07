@@ -798,6 +798,8 @@ class AcceptanceTester extends \Codeception\Actor
 
         $this->switchToNextTab();
         $this->wait(rand(3, 5));
+        $this->reloadPage();
+        $this->wait(rand(3, 5));
 
             try {
                 try {
@@ -860,6 +862,8 @@ class AcceptanceTester extends \Codeception\Actor
 
             $this->switchToNextTab();
             $this->wait(rand(3, 5));
+            $this->reloadPage();
+            $this->wait(rand(3, 5));
 
             try {
                 try {
@@ -921,6 +925,8 @@ class AcceptanceTester extends \Codeception\Actor
             $this->wait(3);
 
             $this->switchToNextTab();
+            $this->wait(rand(3, 5));
+            $this->reloadPage();
             $this->wait(rand(3, 5));
 
             try {
