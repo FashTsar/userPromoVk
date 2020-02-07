@@ -37,17 +37,6 @@ for ($i = 1; $i <= 1000000; $i++) {
     $time++;
     echo "\nОборот номер $time";
 
-    $I->openNewTab();
-    $I->wait(3);
-    $I->amOnUrl("https://www.google.ru/");
-    $I->wait(3);
-    $I->switchToPreviousTab(1);
-    $I->wait(3);
-    $I->closeTab();
-    $I->wait(3);
-    $I->switchToNextTab();
-    $I->wait(3);
-
     // проверка количества групп в ВК
     $I->checkingNumberGroups();
 
@@ -115,12 +104,6 @@ for ($i = 1; $i <= 1000000; $i++) {
 
     // Добавляемся в группу (гарантия) с http://promovk.ru/
     $I->addGroupGarantPromovk();
-
-
-    $I->closeTab();
-    $I->wait(3);
-    $I->openNewTab();
-    $I->wait(3);
 
     $randWait = rand(176, 364);
     echo "\nЖдём $randWait секунд";
